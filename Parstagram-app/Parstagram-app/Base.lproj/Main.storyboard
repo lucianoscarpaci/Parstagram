@@ -137,11 +137,88 @@
                         <viewLayoutGuide key="safeArea" id="kPB-bP-D3Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Jzs-ow-T5e"/>
+                    <navigationItem key="navigationItem" id="Jzs-ow-T5e">
+                        <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="NJh-GQ-wxP">
+                            <connections>
+                                <segue destination="5Rk-ug-Oo0" kind="presentation" id="1Ua-aZ-1vF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buk-IB-xbI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1464" y="53"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="yya-ZX-oyJ">
+            <objects>
+                <viewController id="5Rk-ug-Oo0" customClass="CameraViewController" customModule="Parstagram_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EUp-Yv-QJ1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="M6S-vp-SKn">
+                                <rect key="frame" x="20" y="64" width="374" height="281"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="281" id="Axl-lC-0kN"/>
+                                    <constraint firstAttribute="width" constant="374" id="aK0-SU-6gD"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gsQ-do-3OZ" appends="YES" id="uUq-IW-IT1"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOs-UN-l4w">
+                                <rect key="frame" x="20" y="367" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="aBB-jF-ZQS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A24-JX-qCr">
+                                <rect key="frame" x="20" y="409" width="374" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dZN-bd-oQF"/>
+                                </constraints>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSubmitItem:" destination="5Rk-ug-Oo0" eventType="touchUpInside" id="HbN-Fl-ZC4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ajq-ph-RKx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="A24-JX-qCr" firstAttribute="top" secondItem="DOs-UN-l4w" secondAttribute="bottom" constant="8" symbolic="YES" id="2xN-y2-C3b"/>
+                            <constraint firstItem="M6S-vp-SKn" firstAttribute="top" secondItem="ajq-ph-RKx" secondAttribute="top" constant="64" id="3PV-xj-cCc"/>
+                            <constraint firstItem="A24-JX-qCr" firstAttribute="top" secondItem="DOs-UN-l4w" secondAttribute="bottom" constant="8" symbolic="YES" id="HSx-Vy-Xqu"/>
+                            <constraint firstItem="ajq-ph-RKx" firstAttribute="trailing" secondItem="A24-JX-qCr" secondAttribute="trailing" constant="20" id="WSD-x8-D52"/>
+                            <constraint firstItem="ajq-ph-RKx" firstAttribute="trailing" secondItem="M6S-vp-SKn" secondAttribute="trailing" constant="20" id="cCa-Fr-S9g"/>
+                            <constraint firstItem="DOs-UN-l4w" firstAttribute="leading" secondItem="ajq-ph-RKx" secondAttribute="leading" constant="20" id="dfP-SP-ctp"/>
+                            <constraint firstItem="ajq-ph-RKx" firstAttribute="bottom" secondItem="M6S-vp-SKn" secondAttribute="bottom" constant="371" id="iSq-aD-1UZ"/>
+                            <constraint firstItem="A24-JX-qCr" firstAttribute="leading" secondItem="ajq-ph-RKx" secondAttribute="leading" constant="20" id="jpd-vP-br2"/>
+                            <constraint firstItem="ajq-ph-RKx" firstAttribute="trailing" secondItem="DOs-UN-l4w" secondAttribute="trailing" constant="20" id="kih-xT-QZS"/>
+                            <constraint firstItem="DOs-UN-l4w" firstAttribute="top" secondItem="M6S-vp-SKn" secondAttribute="bottom" constant="22" id="nEI-Is-8oP"/>
+                            <constraint firstItem="M6S-vp-SKn" firstAttribute="leading" secondItem="ajq-ph-RKx" secondAttribute="leading" constant="20" id="naa-qk-e2C"/>
+                            <constraint firstItem="ajq-ph-RKx" firstAttribute="bottom" secondItem="A24-JX-qCr" secondAttribute="bottom" constant="277" id="sN1-Hu-5IQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentField" destination="DOs-UN-l4w" id="7Yv-Rh-GyX"/>
+                        <outlet property="imageView" destination="M6S-vp-SKn" id="Ihv-hW-eNG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4fD-QJ-svI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="gsQ-do-3OZ">
+                    <connections>
+                        <action selector="onCameraButton:" destination="5Rk-ug-Oo0" id="E7D-R9-Ef8"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2266.666666666667" y="52.989130434782609"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zRc-gz-84f">
@@ -163,6 +240,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="image_placeholder" width="375" height="375"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <image name="instagram_logo" width="255" height="108"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
