@@ -141,26 +141,74 @@
         <scene sceneID="fnB-ek-kAB">
             <objects>
                 <viewController id="Urh-JY-SoQ" customClass="FeedViewController" customModule="Parstagram_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="vWx-9A-e2U">
+                    <view key="view" contentMode="scaleToFill" id="vWx-9A-e2U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popsicle" translatesAutoresizingMaskIntoConstraints="NO" id="lS0-rc-vR2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="891"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="gPZ-aM-Pz6"/>
-                                    <constraint firstAttribute="height" constant="891" id="iap-pE-5vj"/>
-                                </constraints>
-                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bcp-G2-689">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <imageView key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popsicle" id="lS0-rc-vR2">
+                                    <rect key="frame" x="0.0" y="579" width="414" height="891"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="414" id="gPZ-aM-Pz6"/>
+                                        <constraint firstAttribute="height" constant="891" id="iap-pE-5vj"/>
+                                    </constraints>
+                                </imageView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="523" id="17g-E5-g3N" customClass="PostCell" customModule="Parstagram_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="523"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="17g-E5-g3N" id="2Es-kc-Kgg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="523"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rdp-ad-2cW">
+                                                    <rect key="frame" x="8" y="8" width="398" height="415"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="rdp-ad-2cW" secondAttribute="height" multiplier="398:415" id="TPo-I5-1Mq"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZS-k3-PbK">
+                                                    <rect key="frame" x="8" y="431" width="28.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is my comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pz-YN-SJc">
+                                                    <rect key="frame" x="44.5" y="431" width="152.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SZS-k3-PbK" firstAttribute="top" secondItem="rdp-ad-2cW" secondAttribute="bottom" constant="8" id="30L-1y-UhW"/>
+                                                <constraint firstItem="rdp-ad-2cW" firstAttribute="top" secondItem="2Es-kc-Kgg" secondAttribute="top" constant="8" id="9SS-VP-oW7"/>
+                                                <constraint firstItem="6Pz-YN-SJc" firstAttribute="top" secondItem="rdp-ad-2cW" secondAttribute="bottom" constant="8" id="ECq-I5-W5E"/>
+                                                <constraint firstItem="6Pz-YN-SJc" firstAttribute="leading" secondItem="SZS-k3-PbK" secondAttribute="trailing" constant="8" id="ETe-u6-pap"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="6Pz-YN-SJc" secondAttribute="bottom" constant="8" id="HSo-ov-gnO"/>
+                                                <constraint firstItem="SZS-k3-PbK" firstAttribute="leading" secondItem="2Es-kc-Kgg" secondAttribute="leading" constant="8" id="Lbf-Ur-xfr"/>
+                                                <constraint firstItem="rdp-ad-2cW" firstAttribute="leading" secondItem="2Es-kc-Kgg" secondAttribute="leading" constant="8" id="OCa-eR-hCI"/>
+                                                <constraint firstAttribute="trailing" secondItem="rdp-ad-2cW" secondAttribute="trailing" constant="8" id="SL5-tv-drM"/>
+                                                <constraint firstItem="SZS-k3-PbK" firstAttribute="top" secondItem="rdp-ad-2cW" secondAttribute="bottom" constant="8" id="XjW-HU-S9g"/>
+                                                <constraint firstItem="6Pz-YN-SJc" firstAttribute="leading" secondItem="SZS-k3-PbK" secondAttribute="trailing" constant="8" id="tgw-Nj-Ge6"/>
+                                                <constraint firstAttribute="bottom" secondItem="SZS-k3-PbK" secondAttribute="bottom" constant="71" id="yQv-67-Ac3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentLabel" destination="6Pz-YN-SJc" id="zYk-l5-JGl"/>
+                                            <outlet property="posterView" destination="rdp-ad-2cW" id="NMh-oO-Hth"/>
+                                            <outlet property="usernameLabel" destination="SZS-k3-PbK" id="s1e-Zi-hJt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kPB-bP-D3Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="lS0-rc-vR2" firstAttribute="leading" secondItem="kPB-bP-D3Z" secondAttribute="leading" id="KqV-ye-iBH"/>
-                            <constraint firstAttribute="bottom" secondItem="lS0-rc-vR2" secondAttribute="bottom" id="ep9-13-39v"/>
-                            <constraint firstItem="lS0-rc-vR2" firstAttribute="trailing" secondItem="kPB-bP-D3Z" secondAttribute="trailing" id="n1y-73-0i4"/>
-                            <constraint firstItem="lS0-rc-vR2" firstAttribute="top" secondItem="vWx-9A-e2U" secondAttribute="top" id="nd1-Qv-25d"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jzs-ow-T5e">
                         <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="NJh-GQ-wxP">
@@ -169,6 +217,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Bcp-G2-689" id="bTQ-Zp-Onj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buk-IB-xbI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
