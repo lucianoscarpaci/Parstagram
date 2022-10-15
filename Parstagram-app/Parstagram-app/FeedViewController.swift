@@ -38,7 +38,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         
         //make the query
         let query = PFQuery(className:"Posts")
-        query.includeKey("author")
+        query.includeKeys(["author", "comments", "comments.author"])
         query.limit = 20
         
         query.findObjectsInBackground { (posts, error) in
@@ -49,28 +49,51 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) ->
+    Int {
+        let post = posts[section]
+        let comments = (post["comments"] as? [PFObject]) ?? []
+        
+        return comments.count + 1 //one photo for every post
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return posts.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:   "PostCell") as! PostCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
+        UITableViewCell {
         
-        let post = posts[indexPath.row]
-        let user = post["author"] as! PFUser
-        cell.commentLabel.text = post["caption"] as! String
+        let post = posts[indexPath.section]
+        let comments = (post["comments"] as? [PFObject]) ?? []
         
-        let imageFile = post["image"] as! PFFileObject
-        let urlString = imageFile.url!
-        let url = URL(string: urlString)!
-        
-        cell.posterView.af.setImage(withURL: url)
-        
-        
-        
-        return cell
-        
-        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+            
+            let user = post["author"] as! PFUser
+            cell.usernameLabel.text = user.username
+            
+            cell.commentLabel.text = post["caption"] as? String
+            
+            let imageFile = post["image"] as! PFFileObject
+            let urlString = imageFile.url!
+            let myURL = URL(string: urlString)!
+            
+            cell.posterView.af.setImage(withURL: myURL)
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
+            
+            //code is working at this point
+            let newComment = comments[indexPath.row - 1]
+            cell.nameLabel.text = newComment["text"] as? String
+            
+            let newUser = newComment["author"] as! PFUser
+            cell.nameLabel.text = newUser.username
+            
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -81,7 +104,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         comment["post"] = post
         comment["author"] = PFUser.current()!
         
-        post.add(comment, forKey: "comments")
+        post.add(comment, forKey: "Comments")
         
         post.saveInBackground { (success, error) in
             if success {
