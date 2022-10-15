@@ -8,12 +8,15 @@
 import UIKit
 import Parse
 import AlamofireImage
+import MessageInputBar
 
 class FeedViewController: UIViewController, UITableViewDelegate,
-                          UITableViewDataSource {
+                          UITableViewDataSource, MessageInputBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     // create empty array object of PFObject
+    let commentBarView = MessageInputBar()
+    var commentBarEnabled = false
     var posts = [PFObject]()
     
     @IBAction func OnLogoutButton(_ sender: Any) {
@@ -28,9 +31,33 @@ class FeedViewController: UIViewController, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        commentBarView.inputTextView.placeholder = "Add a comment..."
+        commentBarView.sendButton.title = "Post"
+        commentBarView.delegate = self
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.keyboardDismissMode = .interactive
+        
+        let NScenter = NotificationCenter.default
+        NScenter.addObserver(self, selector: #selector(keyboardAppearHidden(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    @objc func keyboardAppearHidden(note: Notification) {
+        commentBarView.inputTextView.text = nil
+        commentBarEnabled = false
+        becomeFirstResponder()
+    }
+    
+    override var inputAccessoryView: UIView? {
+        return commentBarView
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return commentBarEnabled
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,12 +76,24 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         }
     }
     
+    func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
+        //create the comment
+        
+        //clear and dismiss
+        commentBarView.inputTextView.text = nil
+        
+        
+        commentBarEnabled = false
+        becomeFirstResponder()
+        commentBarView.inputTextView.resignFirstResponder()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) ->
     Int {
         let post = posts[section]
         let comments = (post["comments"] as? [PFObject]) ?? []
         
-        return comments.count + 1 //one photo for every post
+        return comments.count + 2 //one photo for every post
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,7 +121,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,
             cell.posterView.af.setImage(withURL: myURL)
             
             return cell
-        } else {
+        } else if indexPath.row <= comments.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
             
             //code is working at this point
@@ -93,14 +132,25 @@ class FeedViewController: UIViewController, UITableViewDelegate,
             cell.nameLabel.text = newUser.username
             
             return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCommentCell")!
+            
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = posts[indexPath.row]
+        let post = posts[indexPath.section]
         
-        let comment = PFObject(className: "Comments")
-        comment["text"] = "This is a random comment"
+        let comments = (post["comments"] as? [PFObject]) ?? []
+        
+        if indexPath.row == comments.count + 1 {
+            commentBarEnabled = true
+            becomeFirstResponder()
+            commentBarView.inputTextView.becomeFirstResponder()
+            
+        }
+        /* comment["text"] = "This is a random comment"
         comment["post"] = post
         comment["author"] = PFUser.current()!
         
@@ -113,7 +163,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,
             else {
                 print("error saving comment")
             }
-        }
+        }*/
     }
     /*
     // MARK: - Navigation
