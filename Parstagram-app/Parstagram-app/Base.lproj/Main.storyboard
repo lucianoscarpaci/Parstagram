@@ -151,7 +151,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <imageView key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popsicle" id="lS0-rc-vR2">
-                                    <rect key="frame" x="0.0" y="579" width="414" height="891"/>
+                                    <rect key="frame" x="0.0" y="618" width="414" height="891"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="414" id="gPZ-aM-Pz6"/>
@@ -173,13 +173,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZS-k3-PbK">
-                                                    <rect key="frame" x="8" y="431" width="28.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="16" y="431" width="30.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is my comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pz-YN-SJc">
-                                                    <rect key="frame" x="44.5" y="431" width="152.5" height="20.5"/>
+                                                    <rect key="frame" x="54.5" y="431" width="152.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -191,7 +191,7 @@
                                                 <constraint firstItem="6Pz-YN-SJc" firstAttribute="top" secondItem="rdp-ad-2cW" secondAttribute="bottom" constant="8" id="ECq-I5-W5E"/>
                                                 <constraint firstItem="6Pz-YN-SJc" firstAttribute="leading" secondItem="SZS-k3-PbK" secondAttribute="trailing" constant="8" id="ETe-u6-pap"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="6Pz-YN-SJc" secondAttribute="bottom" constant="8" id="HSo-ov-gnO"/>
-                                                <constraint firstItem="SZS-k3-PbK" firstAttribute="leading" secondItem="2Es-kc-Kgg" secondAttribute="leading" constant="8" id="Lbf-Ur-xfr"/>
+                                                <constraint firstItem="SZS-k3-PbK" firstAttribute="leading" secondItem="2Es-kc-Kgg" secondAttribute="leading" constant="16" id="Lbf-Ur-xfr"/>
                                                 <constraint firstItem="rdp-ad-2cW" firstAttribute="leading" secondItem="2Es-kc-Kgg" secondAttribute="leading" constant="8" id="OCa-eR-hCI"/>
                                                 <constraint firstAttribute="trailing" secondItem="rdp-ad-2cW" secondAttribute="trailing" constant="8" id="SL5-tv-drM"/>
                                                 <constraint firstItem="SZS-k3-PbK" firstAttribute="top" secondItem="rdp-ad-2cW" secondAttribute="bottom" constant="8" id="XjW-HU-S9g"/>
@@ -203,6 +203,42 @@
                                             <outlet property="commentLabel" destination="6Pz-YN-SJc" id="zYk-l5-JGl"/>
                                             <outlet property="posterView" destination="rdp-ad-2cW" id="NMh-oO-Hth"/>
                                             <outlet property="usernameLabel" destination="SZS-k3-PbK" id="s1e-Zi-hJt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="39" id="Erm-he-M3i" customClass="CommentCell" customModule="Parstagram_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="551" width="414" height="39"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Erm-he-M3i" id="5ZK-Sz-4hm">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abf-Ym-53Z">
+                                                    <rect key="frame" x="16" y="8" width="29.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey, its me" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pl7-Uc-Eil">
+                                                    <rect key="frame" x="53.5" y="8" width="84" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Pl7-Uc-Eil" firstAttribute="leading" secondItem="Abf-Ym-53Z" secondAttribute="trailing" constant="8" id="3s0-9B-azn"/>
+                                                <constraint firstItem="Pl7-Uc-Eil" firstAttribute="leading" secondItem="Abf-Ym-53Z" secondAttribute="trailing" constant="8" id="Dg3-a5-FMl"/>
+                                                <constraint firstItem="Abf-Ym-53Z" firstAttribute="top" secondItem="5ZK-Sz-4hm" secondAttribute="top" constant="8" id="f4O-yz-fMc"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Pl7-Uc-Eil" secondAttribute="trailing" constant="8" id="fZo-Xl-Her"/>
+                                                <constraint firstItem="Pl7-Uc-Eil" firstAttribute="top" secondItem="5ZK-Sz-4hm" secondAttribute="top" constant="8" id="gij-by-sna"/>
+                                                <constraint firstItem="Abf-Ym-53Z" firstAttribute="leading" secondItem="5ZK-Sz-4hm" secondAttribute="leading" constant="16" id="q4L-0q-i3Z"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Abf-Ym-53Z" secondAttribute="bottom" constant="8" id="rqf-sS-MGb"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Pl7-Uc-Eil" secondAttribute="bottom" constant="8" id="trc-An-gqK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentLabel" destination="Pl7-Uc-Eil" id="f8l-CQ-YGk"/>
+                                            <outlet property="nameLabel" destination="Abf-Ym-53Z" id="gfx-gl-AI5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
