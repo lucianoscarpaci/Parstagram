@@ -69,7 +69,8 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         query.limit = 20
         
         query.findObjectsInBackground { (posts, error) in
-            if posts != nil {
+            if (posts != nil)
+            {
                 self.posts = posts!
                 self.tableView.reloadData()
             }
@@ -78,12 +79,12 @@ class FeedViewController: UIViewController, UITableViewDelegate,
     
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
         //create the comment
-        let comment = PFObject(className: "Comments")
+        let comment = PFObject(className: "comments")
         comment["text"] = "This is a random comment"
         comment["post"] = selectedPost
         comment["author"] = PFUser.current()!
         
-        selectedPost.add(comment, forKey: "Comments")
+        selectedPost.add(comment, forKey: "comments")
         
         selectedPost.saveInBackground { (success, error) in
             if success {
@@ -93,9 +94,9 @@ class FeedViewController: UIViewController, UITableViewDelegate,
                 print("error saving comment")
             }
         }
-        
+        tableView.reloadInputViews()
         tableView.reloadData()
-        
+
         //clear and dismiss
         commentBarView.inputTextView.text = nil
         
@@ -129,7 +130,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,
             let user = post["author"] as! PFUser
             cell.usernameLabel.text = user.username
             
-            cell.commentLabel.text = post["caption"] as? String
+            cell.commentLabel.text = post["caption"] as! String
             
             let imageFile = post["image"] as! PFFileObject
             let urlString = imageFile.url!
@@ -138,7 +139,9 @@ class FeedViewController: UIViewController, UITableViewDelegate,
             cell.posterView.af.setImage(withURL: myURL)
             
             return cell
-        } else if indexPath.row <= comments.count {
+        }
+        else if indexPath.row <= comments.count
+        {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
             
             //code is working at this point
@@ -149,7 +152,8 @@ class FeedViewController: UIViewController, UITableViewDelegate,
             cell.nameLabel.text = newUser.username
             
             return cell
-        } else {
+        }
+        else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddCommentCell")!
             
             return cell
@@ -171,7 +175,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         }
        
     }
-    /*
+        /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

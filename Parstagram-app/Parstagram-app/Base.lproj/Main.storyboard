@@ -196,7 +196,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="rdp-ad-2cW" secondAttribute="trailing" constant="8" id="SL5-tv-drM"/>
                                                 <constraint firstItem="SZS-k3-PbK" firstAttribute="top" secondItem="rdp-ad-2cW" secondAttribute="bottom" constant="8" id="XjW-HU-S9g"/>
                                                 <constraint firstItem="6Pz-YN-SJc" firstAttribute="leading" secondItem="SZS-k3-PbK" secondAttribute="trailing" constant="8" id="tgw-Nj-Ge6"/>
-                                                <constraint firstAttribute="bottom" secondItem="SZS-k3-PbK" secondAttribute="bottom" constant="71" id="yQv-67-Ac3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
